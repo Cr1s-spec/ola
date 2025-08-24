@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres salir conmigo?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffecf2;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1470');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #e91e63;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      max-width: 400px;
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-images img {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(233, 30, 99, 0.7);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1.5em;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(194, 24, 91, 0.8);
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .btn {
+      background-color: #e91e63;
+      color: white;
+      padding: 15px 40px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+    }
+
+    .btn:hover {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¿Quieres salir conmigo?</h1>
+    
+    <p>Hola <strong>[❤️NINA❤️]</strong>,</p>
+    
+    <p>❤️esto más que nada es para hacer oficial que estamos saliendo, pero lo quería hacer a mi manera. Sé que es poco tiempo el que llevamos, que ambos tenemos miedos —es más que obvio—, pero no quiero tener miedo a estar contigo ni dudar, porque me encantas, me gustas demasiado. La he pasado muy bien este tiempo que llevamos hablando. Me gustaría pedirte que luchemos por estar juntos. Sé que la distancia te cuesta, pero la verdad es que me daría miedo o no me gustaría perderte porque eres una persona especial para mí. Perdón si soy demasiado meloso, cariñoso o te trato siempre bonito, pero me nace. Sé que no estás acostumbrada, pero quería decirte esto a mi manera. De verdad, me gustas mucho, mucho, muchísimo, al punto que me encanta hablar contigo. TE QUIERO MUCHO, PRECIOSA. Cada momento, cada cosita cuando hablamos, la paso demasiado bien. Así que quiero estar contigo para toda la vida y eso preciosa... muakkkkk. ❤️</p>
+
+    <!-- Carrusel de fotos -->
+    <div class="carousel">
+      <button class="carousel-btn prev" onclick="moveSlide(-1)">‹</button>
+      <div class="carousel-images">
+        <img src="images/IMG_20250816_130510650_HDR_PORTRAIT.jpg" alt="Foto 1">
+        <img src="images/1.jpg" alt="Foto 2">
+        <img src="images/2.jpg" alt="Foto 3">
+        <img src="images/3.jpg" alt="Foto 4">
+      </div>
+      <button class="carousel-btn next" onclick="moveSlide(1)">›</button>
+    </div>
+
+    <button class="btn" onclick="alert('¡Gracias por decir SÍ! 🎉 ahora me tendrás que aguantar toda tu vida. Te quiero mucho ❤️')">Sí, me encantaría</button>
+    <button class="btn" onclick="alert('Entendido, sin presiones. Gracias por tu honestidad 💙')">Tal vez en otro momento</button>
+    
+    <div class="footer">
+      <p>Con cariño,<br><strong>[💙CHISSSSSS💙]</strong></p>
+    </div>
+  </div>
+
+  <!-- Script del carrusel -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-images img');
+
+    function showSlide(index) {
+      const totalSlides = slides.length;
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
+      else currentSlide = index;
+
+      const offset = -currentSlide * 100;
+      document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+    }
+
+    function moveSlide(step) {
+      showSlide(currentSlide + step);
+    }
+
+    // Inicializa el carrusel al cargar
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
